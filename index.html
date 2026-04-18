@@ -406,6 +406,16 @@
         </label>
       </div>
 
+      <div class="pt-2 border-t border-gray-200">
+        <label class="flex items-start gap-2 text-sm cursor-pointer">
+          <input type="checkbox" name="개인정보동의" value="Y" required class="w-4 h-4 accent-orange-500 mt-0.5">
+          <span class="text-gray-700">
+            <a href="privacy.html" target="_blank" class="text-orange-600 underline font-semibold">개인정보 처리방침</a>에 동의합니다 <span class="text-red-500">(필수)</span>
+            <span class="block text-xs text-gray-500 mt-0.5">수집 항목: 이름, 휴대전화, 회사명, 직책, 회사 규모 · 보유 기간: 최대 2년</span>
+          </span>
+        </label>
+      </div>
+
       <button type="submit"
         class="w-full accent-bg text-white py-4 rounded-xl text-lg font-bold hover:shadow-lg transition transform hover:-translate-y-0.5">
         대기자 등록 완료하기 →
@@ -432,11 +442,52 @@
       </div>
       <div class="text-sm">
         <p>문의: <a href="mailto:namga1541@gmail.com" class="accent-text hover:underline">namga1541@gmail.com</a></p>
-        <p class="mt-1 text-xs">본 서비스는 법률 자문을 대체하지 않으며, 참고 자료로 활용하시기 바랍니다.</p>
+        <p class="mt-2">
+          <a href="privacy.html" class="text-white hover:accent-text underline transition">개인정보 처리방침</a>
+        </p>
+        <p class="mt-2 text-xs">본 서비스는 법률 자문을 대체하지 않으며, 참고 자료로 활용하시기 바랍니다.</p>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- ================ 플로팅 문의 버튼 ================ -->
+<div class="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2">
+  <!-- 펼쳐지는 옵션들 (숨김 기본) -->
+  <div id="contactOptions" class="hidden flex-col gap-2 mb-2">
+    <a href="mailto:namga1541@gmail.com?subject=%5B%EC%95%88%EC%A0%84%EC%A7%80%EA%B8%B0%20AI%5D%20%EB%AC%B8%EC%9D%98&body=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94.%20%0A%0A%EC%95%88%EC%A0%84%EC%A7%80%EA%B8%B0%20AI%EC%97%90%20%EB%8C%80%ED%95%B4%20%EB%AC%B8%EC%9D%98%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%0A%0A%ED%9A%8C%EC%82%AC%EB%AA%85%3A%0A%EC%A7%81%EC%B1%85%3A%0A%EB%AC%B8%EC%9D%98%EB%82%B4%EC%9A%A9%3A%0A"
+       class="flex items-center gap-3 bg-white text-gray-900 pl-4 pr-5 py-3 rounded-full shadow-xl hover:shadow-2xl transition border border-gray-200 hover:-translate-y-0.5">
+      <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      <span class="font-semibold text-sm whitespace-nowrap">이메일 문의</span>
+    </a>
+  </div>
+  <!-- 메인 토글 버튼 -->
+  <button onclick="toggleContact()" id="contactToggle"
+    class="accent-bg text-white px-5 py-4 rounded-full shadow-2xl hover:shadow-orange-500/30 transition flex items-center gap-2 font-bold">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+    </svg>
+    <span class="whitespace-nowrap">문의하기</span>
+  </button>
+</div>
+
+<script>
+  function toggleContact() {
+    const opts = document.getElementById('contactOptions');
+    const btn = document.getElementById('contactToggle');
+    if (opts.classList.contains('hidden')) {
+      opts.classList.remove('hidden');
+      opts.classList.add('flex');
+      btn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg><span class="whitespace-nowrap">닫기</span>';
+    } else {
+      opts.classList.add('hidden');
+      opts.classList.remove('flex');
+      btn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span class="whitespace-nowrap">문의하기</span>';
+    }
+  }
+</script>
 
 <!-- 스크롤 시 네비 그림자 효과 -->
 <script>
@@ -462,4 +513,3 @@
 
 </body>
 </html>
-                                                                                                                                                                                                                                
